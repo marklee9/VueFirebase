@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  </head>
+  <body> 
+    <h1>Vue basics</h1>
+    
+    <div id="app">
+      <h2>{{ title }}</h2>
+      <h2>{{ greet() }}</h2>
+      <h3>{{ time("6:00 PM")}}</h3>
+      <a v-bind:href="url">YouTube</a>
+      <div v-bind:class="classes[0]">Class example</div>
+
+      <p>I earn {{ wage }} per hour</p>
+      <button v-on:click="wage++">Click to increase by 1</button>
+      <button v-on:click="wage--">Click to increase by 1</button>
+
+      <button @click="changeWage(1)">changWage function 1</button>
+      <button @click="changeWage(-1)">changeWage function -1</button>
+
+      <button @dblclick="changeWage(5)">Double Click 5</button>
+      <button @dblclick="changeWage(-5)">Double Click -5</button>
+
+    </br>
+    </br>
+
+      <button @click="logEvent">Event</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
