@@ -7,16 +7,27 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+    <style>
+      .canvas {
+        width: 300px;
+        height: 300px;
+        margin: 5px;
+        background-color: bisque;
+      }
+    </style>
   </head>
   <body> 
     <h1>Vue basics</h1>
     
     <div id="app">
-      <h2>{{ title }}</h2>
-      <h2>{{ greet() }}</h2>
-      <h3>{{ time("6:00 PM")}}</h3>
+      <h2>Events</h2>
+
+      <h4>{{ title }}</h4>
+      <h4>{{ greet() }}</h4>
+      <h4>{{ time("6:00 PM")}}</h4>
       <a v-bind:href="url">YouTube</a>
-      <div v-bind:class="classes[0]">Class example</div>
+      <a :href="url">YouTube</a>
+      <div :[m]="classes[0]">Class example</div> 
 
       <p>I earn {{ wage }} per hour</p>
       <button v-on:click="wage++">Click to increase by 1</button>
@@ -30,8 +41,52 @@
 
     </br>
     </br>
-
       <button @click="logEvent">Event</button>
+      <h2>Event Objects</h2>
+
+      <div class="canvas" @mousemove="logCoord">{{coord.x}}, {{coord.y}}</div>
+
+    </br>
+    </br>
+      <h2>2-Way Data Binding</h2>
+
+      <!-- This is one way to do it -->
+      <input type="text" @keyup="updateName">  
+      <h4>My name is {{ name }}</h4>
+
+      <!-- Better way to handle -->
+      <input type="text" v-model="name2">
+      <h4>My name is {{ name2 }}</h4>
+
+    </br>
+    </br>
+      <h2>Modifier</h2>
+      <button @click.shift="logEvent">Shift Button</button>
+      <!-- Prevents default, It will not direct you to google -->
+      <a href="http://www.google.com" @click.prevent="logEvent"></a> 
+
+    </br>
+    </br>
+    <h2>Conditional</h2>
+
+      <p v-if="toggle">Toggling</p>
+      <button @click="toggling()">Toggling Button</button>
+
+      <p v-if="state === 1"> {{ one }} </p>
+      <p v-else-if="state === 2"> {{ two }} </p>
+      <p v-else="state === 3"> {{ three }} </p>
+
+      <button @click="changeNumber()"> Changing State {{ state }}</button>
+
+    </br>
+    </br>
+    <h2>Looping</h2>
+
+    <p v-for="el in array"> {{el}} </p>
+    <p v-for="(el, i) in array"> {{el}}, {{i}} </p>
+
+    <p v-for="key in object"> {{key}}, {{object[key]}} </p>
+      
     </div>
 
     <script src="app.js"></script>
